@@ -1,5 +1,8 @@
 package pro.sky.collectonsHW1;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
+
 import java.util.Objects;
 
 public class Employee {
@@ -10,8 +13,16 @@ public class Employee {
 
 
     public Employee(String firstName, String lastName, double salary, int department) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+
+        String one = StringUtils.trim(firstName);
+        String two = StringUtils.trim(lastName);
+
+        if (StringUtils.strip(one).isEmpty() || StringUtils.strip(two).isEmpty()) {
+            throw new RuntimeException(String.valueOf(HttpStatus.BAD_REQUEST));
+        }
+
+        this.firstName = StringUtils.capitalize(StringUtils.strip(one));
+        this.lastName = StringUtils.capitalize(StringUtils.strip(two));
         this.salary = salary;
         this.department = department;
     }
