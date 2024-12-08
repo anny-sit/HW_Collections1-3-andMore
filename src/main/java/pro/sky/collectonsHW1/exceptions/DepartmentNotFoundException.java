@@ -3,7 +3,6 @@ package pro.sky.collectonsHW1.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.CONFLICT)
-public class EmployeeAlreadyAddedException extends RuntimeException {
-
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class DepartmentNotFoundException extends RuntimeException {
 }
